@@ -8,6 +8,10 @@ class Node {
         Node* next;
 
     public:
+        Node(int data1 , Node* next1) {
+            data = data1;
+            next = next1;
+        }
         Node(int data1) {
             data = data1;
             next = nullptr;
@@ -99,6 +103,76 @@ Node* removeNodeElement (Node* head, int k) {
     }
     return head;
 }
+
+// insert an element
+Node* insertFromHead(Node* head, int n) {
+    Node* temp = new Node(n,head);
+    // temp->next = head; 
+    return temp;
+}
+
+// insert at the tail
+Node* insertToTail(Node* head, int n) {
+    if(head==NULL) return new Node(n);
+    Node* temp = head;
+    while(temp->next != NULL) {
+        temp = temp->next;
+    }
+    Node* node = new Node(n);
+    temp->next = node;
+    return head;
+}
+
+// insert at the given position
+Node* insertToPosition(Node* head, int n, int k) {
+    if(head == NULL) {
+        if(k==1)
+            return new Node(n);
+        else return NULL;
+    }
+    if(k==1) {
+        Node* temp = new Node(n,head);
+        return temp;
+    }
+    int count = 0;
+    Node* temp = head;
+    while(temp) {
+        count++;
+        if(count == k-1) {
+            Node* newNode = new Node(n);
+            newNode->next = temp->next;
+            temp->next = newNode;
+            break;
+        }
+        else{
+            temp=temp->next;
+        }
+    }
+    return head;
+}
+
+// insert a value before a given value
+Node* insertBeforeValue(Node* head, int n, int k) {
+    if(head == NULL) {
+        return NULL;
+    }
+    if(k == head->data) {
+        return new Node(n,head);
+    }
+    Node* temp = head;
+    while(temp->next != NULL) {
+        if(temp->next->data == k) {
+            Node* newNode = new Node(n, temp->next);
+            temp->next = newNode;
+            break;
+        }
+        else{
+            temp=temp->next;
+        }
+    }
+    return head;
+}
+
 // printing
 void printHead(Node* head) {
     while(head) {
@@ -133,9 +207,14 @@ int main() {
     cout<<length;
     cout<< endl;
 
-    // head = removeHead(head);
-    // head = removeTail(head);
-    // head = removeNodePosition(head, 1);
-    head = removeNodeElement(head, 6);
+    // head = removeHead(head); // deletion from head
+    // head = removeTail(head); // from tail
+    // head = removeNodePosition(head, 1); // by position
+    // head = removeNodeElement(head, 6); // by element
+
+    // head = insertFromHead(head, 8);
+    // head = insertToTail(head,8);
+    // head = insertToPosition(head, 5, 4);
+    // head = insertBeforeValue(head, 12, 2);
     printHead(head);
 }
