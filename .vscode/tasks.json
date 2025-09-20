@@ -2,12 +2,12 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "compile and run active C++ file with input/output",
+            "label": "compile and run active C++ file with local input/output",
             "type": "shell",
             "command": "bash",
             "args": [
                 "-c",
-                "g++ -std=c++17 -o '${fileDirname}/${fileBasenameNoExtension}' '${file}' && '${fileDirname}/${fileBasenameNoExtension}' < '${fileDirname}/input.txt' > '${fileDirname}/output.txt'"
+                "g++ -std=c++17 -o \"${fileDirname}/${fileBasenameNoExtension}\" \"${file}\" && \"${fileDirname}/${fileBasenameNoExtension}\" < \"${fileDirname}/input.txt\" > \"${fileDirname}/output.txt\""
             ],
             "group": {
                 "kind": "build",

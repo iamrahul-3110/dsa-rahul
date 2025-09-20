@@ -62,6 +62,12 @@
   },
   "C_Cpp.errorSquiggles": "disabled",
   "files.associations": {
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "array": "cpp",
+    "string": "cpp",
+    "string_view": "cpp",
+    "ranges": "cpp",
+    "span": "cpp",
+    "vector": "cpp"
   }
 }

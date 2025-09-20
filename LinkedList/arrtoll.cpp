@@ -26,7 +26,7 @@ Node* convertArraytoLL(vector<int> &v) {
     for(int i=1;i<v.size();i++) {
         Node* temp = new Node(v[i]);
         current-> next = temp;  //  we are moving current to temp and assigning current -> next , temp address
-        current = current->next; // or current = temp
+        current = temp; // or current = temp
         cout<< current <<" " <<current->data <<" " <<endl;
     }
     return head;
